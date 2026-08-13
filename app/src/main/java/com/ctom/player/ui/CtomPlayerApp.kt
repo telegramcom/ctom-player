@@ -519,6 +519,7 @@ private fun MiniPlayer(
     onOpen: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val context = LocalContext.current
     LiquidGlassCard(modifier = modifier, onClick = onOpen) {
         Row(modifier = Modifier.padding(9.dp), verticalAlignment = Alignment.CenterVertically) {
             ArtworkPlaceholder(Modifier.size(45.dp).clip(RoundedCornerShape(13.dp)), if (playback.kind == "VIDEO") MediaKind.VIDEO else MediaKind.MUSIC, playback.title)
@@ -526,10 +527,10 @@ private fun MiniPlayer(
                 Text(playback.title, color = TextPrimary, fontSize = 13.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 Text(playback.subtitle, color = TextSecondary, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            IconButton(onClick = { PlaybackService.command(LocalContext.current, PlaybackService.ACTION_TOGGLE) }) {
+            IconButton(onClick = { PlaybackService.command(context, PlaybackService.ACTION_TOGGLE) }) {
                 Icon(if (playback.isPlaying) Icons.Outlined.Pause else Icons.Outlined.PlayArrow, contentDescription = if (playback.isPlaying) "Pause" else "Play", tint = IceBlue)
             }
-            IconButton(onClick = { PlaybackService.command(LocalContext.current, PlaybackService.ACTION_NEXT) }) {
+            IconButton(onClick = { PlaybackService.command(context, PlaybackService.ACTION_NEXT) }) {
                 Icon(Icons.Outlined.SkipNext, contentDescription = "Next", tint = IceBlue)
             }
         }
@@ -538,6 +539,7 @@ private fun MiniPlayer(
 
 @Composable
 private fun NowPlayingScreen(playback: com.ctom.player.playback.PlaybackSnapshot, onBack: () -> Unit) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(bottom = 28.dp),
     ) {
@@ -566,14 +568,14 @@ private fun NowPlayingScreen(playback: com.ctom.player.playback.PlaybackSnapshot
             }
             Spacer(Modifier.height(22.dp))
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
-                LiquidIconButton(Icons.Outlined.SkipPrevious, "Previous", { PlaybackService.command(LocalContext.current, PlaybackService.ACTION_PREVIOUS) }, tint = SoftCyan)
+                LiquidIconButton(Icons.Outlined.SkipPrevious, "Previous", { PlaybackService.command(context, PlaybackService.ACTION_PREVIOUS) }, tint = SoftCyan)
                 IconButton(
-                    onClick = { PlaybackService.command(LocalContext.current, PlaybackService.ACTION_TOGGLE) },
+                    onClick = { PlaybackService.command(context, PlaybackService.ACTION_TOGGLE) },
                     modifier = Modifier.size(68.dp).background(IceBlue, CircleShape),
                 ) {
                     Icon(if (playback.isPlaying) Icons.Outlined.Pause else Icons.Outlined.PlayArrow, contentDescription = "Play or pause", tint = OceanBlack, modifier = Modifier.size(32.dp))
                 }
-                LiquidIconButton(Icons.Outlined.SkipNext, "Next", { PlaybackService.command(LocalContext.current, PlaybackService.ACTION_NEXT) }, tint = SoftCyan)
+                LiquidIconButton(Icons.Outlined.SkipNext, "Next", { PlaybackService.command(context, PlaybackService.ACTION_NEXT) }, tint = SoftCyan)
             }
             Spacer(Modifier.height(24.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
