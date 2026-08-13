@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -103,11 +104,12 @@ fun CtomPlayerApp(
     val isScanning by vm.isScanning.collectAsState()
     val playback by PlaybackBus.snapshot.collectAsState()
     var screen by remember { mutableStateOf(screenFor(initialDestination)) }
+    val context = LocalContext.current
 
     LaunchedEffect(hasMediaPermission) { vm.refresh(hasMediaPermission) }
 
     val openItem: (MediaItemModel) -> Unit = { item ->
-        PlaybackService.play(LocalContext.current, item)
+        PlaybackService.play(context, item)
         screen = Screen.NOW_PLAYING
     }
 
@@ -198,7 +200,7 @@ fun CtomPlayerApp(
 }
 
 @Composable
-private fun BottomNavItem(
+private fun RowScope.BottomNavItem(
     target: Screen,
     label: String,
     icon: ImageVector,

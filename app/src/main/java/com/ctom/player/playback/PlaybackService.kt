@@ -37,7 +37,6 @@ class PlaybackService : MediaSessionService() {
             )
             .build()
         mediaSession = MediaSession.Builder(this, player).build()
-        setMediaSession(mediaSession)
 
         player.addListener(object : androidx.media3.common.Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) = publish()
