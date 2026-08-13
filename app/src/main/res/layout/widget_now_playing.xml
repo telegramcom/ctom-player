@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/widget_background"
+    android:orientation="vertical" android:padding="14dp">
+    <TextView android:id="@+id/widget_brand" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ctom~player  ·  NOW PLAYING" android:textColor="#75DCEC" android:textSize="11sp" android:letterSpacing="0.12" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:gravity="center_vertical" android:orientation="horizontal">
+        <ImageView android:id="@+id/widget_art" android:layout_width="54dp" android:layout_height="54dp" android:background="#18364B" android:contentDescription="Album artwork" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:orientation="vertical">
+            <TextView android:id="@+id/widget_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nothing playing" android:textColor="#F3F8FC" android:textSize="15sp" android:maxLines="1" android:ellipsize="end" />
+            <TextView android:id="@+id/widget_artist" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Choose local media" android:textColor="#90A9BA" android:textSize="12sp" android:maxLines="1" />
+        </LinearLayout>
+    </LinearLayout>
+    <ProgressBar android:id="@+id/widget_progress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="3dp" android:max="1000" android:progress="0" android:progressTint="#39D7ED" android:backgroundTint="#203141" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="38dp" android:gravity="center" android:orientation="horizontal">
+        <ImageButton android:id="@+id/widget_previous" android:layout_width="48dp" android:layout_height="38dp" android:background="@android:color/transparent" android:src="@android:drawable/ic_media_previous" android:contentDescription="Previous" android:tint="#C8EAF1" />
+        <ImageButton android:id="@+id/widget_play" android:layout_width="48dp" android:layout_height="38dp" android:background="@android:color/transparent" android:src="@android:drawable/ic_media_play" android:contentDescription="Play or pause" android:tint="#C8EAF1" />
+        <ImageButton android:id="@+id/widget_next" android:layout_width="48dp" android:layout_height="38dp" android:background="@android:color/transparent" android:src="@android:drawable/ic_media_next" android:contentDescription="Next" android:tint="#C8EAF1" />
+    </LinearLayout>
+</LinearLayout>

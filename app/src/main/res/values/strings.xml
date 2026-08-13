@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ctom~player</string>
+    <string name="widget_now_playing">Liquid Now Playing</string>
+    <string name="widget_mini_player">Ocean Mini Player</string>
+    <string name="widget_video">Deep Ocean Video</string>
+    <string name="widget_equalizer">Liquid Equalizer</string>
+    <string name="widget_control_center">ctom~ Control Center</string>
+</resources>
